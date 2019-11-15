@@ -1095,10 +1095,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 853b5bbf42fa18547aa362dc5c381929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3.5
+  speed: 25
   junp: 300
   isGround: 0
-  name: uYC
+  _name: uYC
+  r2d: {fileID: 1891910079}
+  ani: {fileID: 1891910075}
 --- !u!1 &1950536116
 GameObject:
   m_ObjectHideFlags: 0

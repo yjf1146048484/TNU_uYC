@@ -4,11 +4,47 @@ using UnityEngine;
 
 public class player : MonoBehaviour
 {
+    #region
     [Header(" ")][Range(0f,100f)]
     public float speed = 3.5f;
     [Header(" "),Range(100,2000)]
     public int junp = 300;
-    []
     public bool isGround = false;
-    public string name = "uYC";
+    public string _name = "uYC";
+    [Header("剛體")]
+    public Rigidbody2D r2d;
+    public Animator ani;
+    #endregion
+    private void Move()
+    {
+        float h = Input.GetAxisRaw("Horizontal");
+        r2d.AddForce(new Vector2(speed*h,0));
+        ani.SetBool("paobu", h != 0);
+    }
+    private void Jump()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && isGround == true)
+        {
+            isGround = false;
+            r2d.AddForce(new Vector2(0,junp));
+        }
+    }
+    private void Dead()
+    {
+        
+    }
+    //事件
+    private void Update()
+    {
+        Move();
+        Jump();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name == "地板")
+        {
+            isGround = true;
+        }
+    }
 }
