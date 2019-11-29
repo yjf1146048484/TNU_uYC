@@ -20,6 +20,8 @@ public class player : MonoBehaviour
         float h = Input.GetAxisRaw("Horizontal");
         r2d.AddForce(new Vector2(speed*h,0));
         ani.SetBool("paobu", h != 0);
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) transform.eulerAngles = new Vector3(0, 180, 0);
+        else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) transform.eulerAngles = new Vector3(0, 0, 0);
     }
     private void Jump()
     {
@@ -27,6 +29,7 @@ public class player : MonoBehaviour
         {
             isGround = false;
             r2d.AddForce(new Vector2(0,junp));
+            ani.SetTrigger("junp");
         }
     }
     private void Dead()
